@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  -->
+    <title>Usuario | Inicio</title>
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/usuario.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('usuario') }}">Quarium Usuario</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('usuario') }}" style="color: white;">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('colaboradores') }}" style="color: white;">Colaboradores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('comentarios') }}" style="color: white;">Comentarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}" style="color: white;">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <img src="/static/images/logo1.png" class="logo" alt="Logo de tu empresa">
+
+    <div class="container">
+        <h1 class="text-center mb-5 text-white">¡Bienvenido {{ usuario.nombre }}!</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <p>¡Expon tu trabajo al mundo! Quarium es la plataforma innovadora que conecta a alberqueros,
+                plomeros y mosaiqueros con clientes que buscan sus servicios.</p>
+
+            <p>Quarium es el proyecto innovador que el mercado de piscinas necesitaba.Una plataforma que beneficia
+                tanto a profesionales como a clientes, simplificando la búsqueda de servicios y garantizando resultados
+                de calidad.
+            </p>
+
+            <div class="buttons-container">
+                <a href="{{ url_for('colaboradores') }}"><button
+                        class="ripple-btn"><span></span>Colaboradores</button></a>
+                <a href="{{ url_for('comentarios') }}"><button class="ripple-btn"><span></span>Ingresar
+                        Comentario</button></a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Quarium. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

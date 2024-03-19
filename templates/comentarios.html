@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  -->
+    <title>Usuario | Agregar Comentarios</title>
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('usuario') }}">Quarium Usuario</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('usuario') }}" style="color: white;">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('colaboradores') }}" style="color: white;">colaboradores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('comentarios') }}" style="color: white;">Comentarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}" style="color: white;">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5 text-white">Ingresar Comentarios</h1>
+    </div>
+
+    <div class="container mb-5 mt-5">
+        <div class="container">
+            <div class="card shadow bg">
+                <div class="card-body">
+                    <form action="/agregarComentario/" method="POST">
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label>Nombre:</label>
+                                <input type="text" class="form-control mb-3" name="nombre" value="{{ usuario.nombre }}"
+                                    readonly>
+                            </div>
+                            <div class="col-12">
+                                <label>Ingresa tu comentario:</label>
+                                <input type="text" class="form-control mb-3" name="comentario">
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-success" type="submit">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Quarium. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

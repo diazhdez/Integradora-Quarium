@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  -->
+    <title>Administrador | Colaboradores Aceptados</title>
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('administrador') }}">Quarium Admin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('aceptarEmpleados') }}" style="color: white;">Aceptar
+                        Colaboradores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('empleadosAceptados') }}" style="color: white;">Colaboradores
+                        Aceptados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('verComentarios') }}" style="color: white;">Comentarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}" style="color: white;">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5 text-white">Colaboradores Aceptados</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for empleado in empleados %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="text-center">{{ empleado.nombre }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="/actualizaEmpleado/" method="POST">
+                            <input type="hidden" name="empleado_id" value="{{ empleado._id }}">
+                            <div class="row" style="align-self: center;">
+                                {%if empleado.foto_perfil%}
+                                <div class="mb-3">
+                                    <img src="data:image/jpeg;base64,{{empleado.foto_perfil}}"
+                                        alt="{{ empleado.nombre }}"
+                                        style="width: 150px; height: 150px; border-radius: 50%;">
+                                </div>
+                                {%else%}
+                                <div class="mb-3">
+                                    <img src="/static/images/user_icon.jpg" alt="{{ empleado.nombre }}"
+                                        style="width: 150px; height: 150px; border-radius: 50%;">
+                                </div>
+                                {%endif%}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <small>Area Laboral</small>
+                                    <input type="text" class="form-control" value="{{ empleado.area_laboral }}"
+                                        readonly>
+                                </div>
+                                <div class="col">
+                                    <small>Genero</small>
+                                    <input type="text" class="form-control" value="{{ empleado.genero }}" readonly>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <small>Nacimiento</small>
+                                    <input type="text" class="form-control" value="{{ empleado.fecha }}" readonly>
+                                </div>
+                                <div class="col">
+                                    <small>Teléfono</small>
+                                    <input type="text" class="form-control" value="{{ empleado.telefono }}" readonly>
+                                </div>
+                            </div>
+                            <di v class="row mt-3">
+                                <div class="col">
+                                    <small>Estado</small>
+                                    <input type="text" class="form-control" value="{{ empleado.estado }}" readonly>
+                                </div>
+                                <div class="col">
+                                    <small>Municipio</small>
+                                    <input type="text" class="form-control" value="{{ empleado.municipio }}" readonly>
+                                </div>
+                            </di>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <small>Ciudad</small>
+                                    <input type="text" class="form-control" value="{{ empleado.ciudad }}" readonly>
+                                </div>
+                                <div class="col">
+                                    <small>Colonia</small>
+                                    <input type="text" class="form-control" value="{{ empleado.colonia }}" readonly>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <small>Calle</small>
+                                    <input type="text" class="form-control" value="{{ empleado.calle }}" readonly>
+                                </div>
+                                <div class="col">
+                                    <small>CP</small>
+                                    <input type="hidden" name="empleado_id" value="{{ empleado._id }}">
+                                    <input type="text" class="form-control" value="{{ empleado.cp }}" readonly>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+
+                                </div>
+                                <div class="col">
+
+                                </div>
+                            </div>
+                            <a href="{{ url_for('deleteEmpleado', empleado_id=empleado._id, template_name='empleadosAceptados') }}"
+                                class="btn btn-danger btn-delete">Eliminar</a>
+                            {% if empleado.cv %}
+                            <a href="/descargar_cv/{{empleado._id}}" class="btn btn-primary">Descargar CV</a>
+                            {% else %}
+                            <small>No hay CV disponible</small>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/borrar.js') }}"></script>
+</body>
+
+</html>

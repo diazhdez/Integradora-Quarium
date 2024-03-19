@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  -->
+    <title>Quarium | Registro</title>
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/registro.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Quarium</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}" style="color: white;">Inicio</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class=" card-header">
+                        Registrarse como:
+                    </div>
+                    <div class="card-body text-center mt-3">
+                        <button class="btn btn-primary usuario-button" data-toggle="collapse"
+                            data-target="#info_usuario" aria-expanded="false" aria-controls="info_usuario"
+                            name="tipo_registro">Usuario</button>
+                        <button class="btn btn-primary colaborador-button" data-toggle="collapse"
+                            data-target="#info_empleado" aria-expanded="false" aria-controls="info_empleado"
+                            name="tipo_registro">Colaborador</button>
+                    </div>
+                    <div id="info_usuario" class="collapse">
+                        <div class="card-header">
+                            Registro de Usuarios
+                        </div>
+                        <div class="card-body">
+                            <form action="/registerUsuario/" method="post" enctype="multipart/form-data">
+                                <div class="form-row">
+                                    <div class="mb-3">
+                                        <label for="foto_perfil" style="text-align: left;">Seleccionar foto de
+                                            perfil</label>
+                                        <div class="form-row">
+                                            <div class="mb-3">
+                                                <label for="foto_perfil_usuario" class="custom-file-upload">
+                                                    <img id="previewImage1" src="/static/images/user_icon.jpg"
+                                                        style="width: 150px; height: 150px; border-radius: 50%;">
+                                                    <input type="file" id="foto_perfil_usuario"
+                                                        name="foto_perfil_usuario" accept=".jpg" required>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="nombre">Nombre Completo:</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre"
+                                            placeholder="Ingresa tu nombre" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="correo">Correo Electrónico:</label>
+                                        <input type="email" class="form-control" id="correo" name="correo"
+                                            placeholder="Ingresa tu correo" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="password">Contraseña:</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            placeholder="Ingresa tu contraseña" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="genero">Género:</label>
+                                        <select class="form-control" id="genero" name="genero" required>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="fecha">Fecha de Nacimiento:</label>
+                                        <input type="date" class="form-control" id="fecha" name="fecha" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="telefono">Teléfono:</label>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono"
+                                            placeholder="Ingresa tu teléfono" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary">Registrarse</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="info_empleado" class="collapse">
+                        <div class="card-header">
+                            Registro de Colaborador
+                        </div>
+                        <div class="card-body">
+                            <form action="/registerColaborador/" method="post" enctype="multipart/form-data">
+                                <div class="form-row">
+                                    <div class="mb-3">
+                                        <label for="foto_perfil" style="text-align: left;">
+                                            Seleccionar foto de perfil
+                                        </label>
+                                        <div class="form-row">
+                                            <div class="mb-3">
+                                                <label for="foto_perfil" class="custom-file-upload">
+                                                    <img id="previewImage" src="/static/images/user_icon.jpg"
+                                                        style="width: 150px; height: 150px; border-radius: 50%;">
+                                                    <input type="file" id="foto_perfil" name="foto_perfil" accept=".jpg"
+                                                        required>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="nombre">Nombre Completo:</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="correo">Correo Electrónico:</label>
+                                        <input type="email" class="form-control" id="correo" name="correo" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="password">Contraseña:</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="area_laboral">Área Laboral:</label>
+                                        <select class="form-control" id="area_laboral" name="area_laboral" required>
+                                            <option value="Alberquero">Alberquero</option>
+                                            <option value="Plomero especializado">Plomero especializado</option>
+                                            <option value="Mosaiquero">Mosaiquero</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="genero">Género:</label>
+                                        <select class="form-control" id="genero" name="genero" required>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="fecha">Fecha de Nacimiento:</label>
+                                        <input type="date" class="form-control" id="fecha" name="fecha" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="telefono">Teléfono:</label>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="estado">Estado:</label>
+                                        <input type="text" class="form-control" id="estado" name="estado" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="municipio">Municipio:</label>
+                                        <input type="text" class="form-control" id="municipio" name="municipio"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="ciudad">Ciudad:</label>
+                                        <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="colonia">Colonia:</label>
+                                        <input type="text" class="form-control" id="colonia" name="colonia" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="calle">Calle:</label>
+                                        <input type="text" class="form-control" id="calle" name="calle" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="cp">Código Postal:</label>
+                                        <input type="text" class="form-control" id="cp" name="cp" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="cv" class="form-label">CV:</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="form-control custom-file-input" id="cv" name="cv"
+                                                accept=".pdf" required>
+                                            <label class="custom-file-label" for="cv">Elige un archivo</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary">Registrarse</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-footer text-center">
+                        ¿Ya tienes una cuenta? <a href="{{ url_for( 'login') }}">Inicia Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var inputFotoPerfil = document.getElementById('foto_perfil');
+            inputFotoPerfil.addEventListener('change', previewImage);
+
+            function previewImage(event) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var preview = document.getElementById('previewImage');
+                    preview.src = reader.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".usuario-button").click(function () {
+                $("#info_empleado").collapse('hide');
+            });
+            $(".colaborador-button").click(function () {
+                $("#info_usuario").collapse('hide');
+            });
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var inputFotoPerfil = document.getElementById('foto_perfil_usuario');
+            inputFotoPerfil.addEventListener('change', previewImage1);
+
+            function previewImage1(event) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var preview = document.getElementById('previewImage1');
+                    preview.src = reader.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        });
+    </script>
+
+    <script>
+        // Obtener el input de archivo y el label
+        const inputFile = document.getElementById('cv');
+        const label = document.querySelector('.custom-file-label');
+
+        // Escuchar el evento de cambio del input de archivo
+        inputFile.addEventListener('change', function () {
+            // Obtener el nombre del archivo seleccionado
+            const fileName = this.files[0].name;
+            // Actualizar el texto del label con el nombre del archivo
+            label.textContent = fileName;
+        });
+    </script>
+</body>
+
+</html>
+
+</html>

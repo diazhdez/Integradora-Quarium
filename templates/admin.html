@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  -->
+    <title>Administrador | Inicio</title>
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/usuario.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('administrador') }}">Quarium Admin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('aceptarEmpleados') }}" style="color: white;">Aceptar
+                        Colaboradores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('empleadosAceptados') }}" style="color: white;">Colaboradores
+                        Aceptados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('verComentarios') }}" style="color: white;">Comentarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}" style="color: white;">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <img src="/static/images/logo1.png" class="logo" alt="Logo de tu empresa">
+
+    <div class="container">
+        <h1 class="text-center mb-5 text-white">¡Bienvenido Administrador!</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <p>Nos complace darte la bienvenida al Panel de Administración de Perfiles de Usuarios.
+                ¡Gracias por unirte a nuestro equipo de administradores! Tu papel es fundamental para mantener
+                y gestionar eficazmente los perfiles de los usuarios en nuestra plataforma.
+            </p>
+
+            <div class="buttons-container">
+                <a href="{{ url_for('aceptarEmpleados') }}"><button class="ripple-btn"><span></span>Aceptar
+                        Empleados</button></a>
+                <a href="{{ url_for('empleadosAceptados') }}"><button class="ripple-btn"><span></span>Empleados
+                        Aceptados</button></a>
+                <a href="{{ url_for('verComentarios') }}"><button class="ripple-btn"><span></span>Ver
+                        Comentarios</button></a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Quarium. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

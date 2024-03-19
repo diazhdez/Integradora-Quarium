@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  -->
+    <title>Colaborador | Inicio</title>
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/usuario.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('colaborador') }}">Quarium Colaborador</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('colaborador') }}" style="color: white;">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('editarDatos') }}" style="color: white;">Editar Datos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}" style="color: white;">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <img src="/static/images/logo1.png" class="logo" alt="Logo de tu empresa">
+
+    <div class="container">
+        <h1 class="text-center mb-5 text-white">¡Bienvenido {{ empleado.nombre }}!</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <p>¡Estamos encantados de darte la bienvenida a nuestra plataforma dedicada a conectar a profesionales
+                como tú con clientes que necesitan tus servicios de plomería, limpieza de albercas y colocación de
+                mosaicos!</p>
+
+            <p>Creemos en construir relaciones sólidas y duraderas contigo, nuestros colaboradores clave, para
+                garantizar el éxito mutuo.
+            </p>
+
+            <div class="buttons-container">
+                <a href="{{ url_for('editarDatos') }}"><button class="ripple-btn"><span></span>Editar Datos</button></a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Quarium. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
