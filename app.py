@@ -548,7 +548,7 @@ def actualizar_datos():
                 nueva_foto_perfil_bin = Binary(nueva_foto_perfil_data)
             else:
                 flash('El archivo debe ser JPG')
-                return redirect(url_for('register'))
+                return redirect(url_for('editarDatos'))
         else:
             nueva_foto_perfil_bin = None
 
@@ -631,5 +631,5 @@ def notFound(error=None):
 
 if __name__ == '__main__':
     # Configuración para OpenSSL
-    # , host="192.168.33.218", port=5000, ssl_context=("cert.pem", "key.pem")
-    app.run(debug=True)
+    # debug=True, host="192.168.33.199", port=5000, ssl_context=("cert.pem", "key.pem")
+    app.run()
